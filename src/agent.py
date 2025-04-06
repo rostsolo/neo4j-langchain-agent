@@ -25,17 +25,17 @@ general_chat = general_chat_prompt | llm | StrOutputParser()
 tools = [
     Tool.from_function(
         name="General Chat",
-        description="For general chat when all other tools did not work",
+        description="For general chat when all other tools do not have a good answer",
         func=general_chat.invoke,
     ),
     Tool.from_function(
-        name="StackOverflow question search",
-        description="For when you need to find similar question and answer for it",
+        name="Software engineering assistant",
+        description="For when you need to answer a question related to software engineering, programming languages or technology",
         func=get_answer_for_question
     ),
     Tool.from_function(
-        name="StackOverflow information",
-        description="Provide information about StackOverflow questions and answers using Cypher",
+        name="StackOverflow assistant",
+        description="For providing information about entities on StackOverflow portal like questions and answers using Cypher",
         func=cypher_qa
     )
 ]
