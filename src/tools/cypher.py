@@ -1,4 +1,3 @@
-import streamlit as st
 from llm import llm
 from graph import graph
 
@@ -18,7 +17,10 @@ Always use case insensitive search when matching strings.
 Example Cypher Statements:
 
 1. To check how many questions on StackOverflow do not have an answer:
-MATCH (q:Question) WHERE NOT ()-[:ANSWERS]->(q) RETURN count(q) AS unanswered_questions
+MATCH (q:Question) WHERE NOT ()-[:ANSWERS]->(q) RETURN count(q) AS result
+
+2. To find the most popular topic on StackOverflow:
+MATCH (q:Question)-[:TAGGED]->(t:Tag) RETURN t.name AS tag, count(q) AS count ORDER BY count DESC LIMIT 1
 
 Schema:
 {schema}
